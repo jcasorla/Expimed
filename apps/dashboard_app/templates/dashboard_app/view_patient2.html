@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
+    </head>
+    <body>
+        <div class=container>
+            <div class="container">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dash/show">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+            
+                </ul>
+            <hr class="my-4">
+
+            <div class="row">
+                <div class="col-sm">
+                    <h1>Patient #{{pat.id}}</h1>
+                    <h3>Name: {{pat.first_name}} {{pat.last_name}}</h3>
+                    <h3>Email: {{pat.email}}</h3>
+                    <h3>Phone: {{pat.phone1}}</h3>
+    
+                   
+                    <hr>
+    
+                    
+                </div>
+                <div class="col-lg" >
+                    <div class="col-lg-15" >
+                        <h5>Available Medications</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Med Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for one_med in all_meds %}
+                                <tr>
+                                <th scope="row">{{one_med.id}}</th><td><a href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a href="/dash/patient/{{pat.id}}/presc_med/{{one_med.id}}">prescribe</a></td>
+                                </tr>
+
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr class="my-2">
+
+                    <div class="col-lg-15" >
+                        <h5>Prescribed Medications</h5>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Med Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for my_med in my_meds %}
+                                <tr>
+                                <th scope="row">{{my_med.id}}</th><td><a href="/dash/med/{{my_med.id}}">{{my_med.name}}</a></td><td><a href="/dash/patient/{{pat.id}}/unpresc_med/{{my_med.id}}">un-prescribe</a></td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    
+
+                </div>
+
+
+            </div>
+
+            
+
+            
+    </div>
+        
+       
+    </body>
+
+
+
+</html>

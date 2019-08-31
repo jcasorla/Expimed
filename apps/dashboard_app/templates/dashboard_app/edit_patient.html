@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="ExpiMed Registration"> -->
+    <title>New Patient</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link" href="/dash/show">Home</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+  
+        </ul>
+        <hr class="my-4">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+      <div class="page-header">
+        <h1>Patient #{{pat.id}}</h1>
+      </div>
+      <!-- <label class="radio-inline"><input type="radio" name="optradio" checked>Doctor</label>
+      <label class="radio-inline"><input type="radio" name="optradio">Patient</label> -->
+
+
+      <form action='/dash/patient/{{pat.id}}/update' method='post'>
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">First Name</label>
+              <input type="text" class="form-control" id="input_first_name"  value={{pat.first_name}} name="first_name">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="input_last_name">Last Name</label>
+              <input type="text" class="form-control" id="input_last_name"  value={{pat.last_name}} name="last_name">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="input_s_last_name">Second Last Name</label>
+              <input type="text" class="form-control" id="input_s_last_name"  value={{pat.sec_last_name}} name="s_last_name">
+            </div>
+          </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputEmai">Email</label>
+            <input type="email" class="form-control" id="inputEmai"  value={{pat.email}} name="email">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPhone">Primary Phone</label>
+            <input type="text" class="form-control" id="inputPhone"  value={{pat.phone1}} name="p_number">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputA_Phone">Alternate Phone</label>
+            <input type="text" class="form-control" id="inputA_Phone"  value={{pat.phone2}} name="a_number">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" value={{pat.address}} name="address">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputColonia">Colonia</label>
+            <input type="text" class="form-control" id="inputColonia" value={{pat.colonia}} name="colonia">
+          </div>
+          
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity" value={{pat.city}} name="city">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control" name="state">
+              <option selected>{{pat.state}}</option>
+              <option>California</option>
+              <option>Nevada</option>
+              <option>Arizona</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip" value={{pat.zip_code}} name="zip_code">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+        
+        
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+      
+  </body>
+  
+</html>

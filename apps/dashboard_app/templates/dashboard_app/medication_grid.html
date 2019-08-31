@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="Patient Grid"> -->
+    <title>Patient Grid</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
+  </head>
+  <body class="body">
+    <div class="container">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" href="/dash/show">Patient Grid</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/dash/meds_grid">Medications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dash/calendar">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+
+        
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <hr class="my-4">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- <h5>{{request.session.id}}</h5> -->
+          <h3>Hello, {{request.session.first_name}}</h3> 
+
+        </div>
+        <div class="col-sm-4">
+          <a class="btn btn-primary" href="/dash/new_med">New Medication</a>
+            <!-- <form action="" method="GET">
+              <button type="submit" class="btn btn-primary">New Med</button>
+              
+          </form>       -->
+          
+
+        </div>
+                      
+        <hr>
+
+
+      </div>
+      <div class="row">
+        <div class="col-lg">
+            <div class="page-header">
+              <h1>Medications Grid</h1>
+            </div>
+              
+
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th><th scope="col">Name</th><th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for one_med in all_meds %}
+                <tr>
+                  <th scope="row">{{one_med.id}}</th><td><a href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a href="/dash/med/{{one_med.id}}/edit">edit</a> | <a href="/dash/med/{{one_med.id}}/del">delete</a></td>
+                </tr>
+
+                {% endfor %}
+                
+              </tbody>
+            </table>
+            
+            
+        </div>
+
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+      
+  </body>
+  
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="ExpiMed Registration"> -->
+    <title>New Medication</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" href="/dash/meds_grid">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+
+      </ul>
+      <hr class="my-4">
+
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+      <div class="page-header">
+          <h1>New Medication</h1>
+      </div>
+      <!-- <label class="radio-inline"><input type="radio" name="optradio" checked>Doctor</label>
+      <label class="radio-inline"><input type="radio" name="optradio">Patient</label> -->
+      
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg align-self-center">
+          <form action='/dash/insert_med' method='post'>
+            {% csrf_token %}
+            <div class="form-group col-md-6 align-self-center">
+              <label for="input_name">Medication Name</label>
+              <input type="text" class="form-control" id="input_name" placeholder="med name" name="name">
+            </div>
+            <div class="form-group col-md-6 align-self-center">
+              <label for="input_category">Category</label>
+              <select id="input_category" class="form-control" name="category">
+                <option selected>Choose...</option>
+                <option>Anti-Inflamatory</option>
+                <option>Antibiotics</option>
+                <option>Anesthetics</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6 align-self-center">
+              <label for="input_desc">Description</label>
+              <textarea class="form-control" rows="5" id="input_desc" placeholder="description" name="description"></textarea>
+              <!-- <input type="text" class="form-control" id="input_desc" placeholder="description" name="description"> -->
+            </div>
+            <div class="form-group col-md-6 align-self-center">
+              <button type="submit" class="btn btn-primary" value='Submit'>Create</button>
+
+            </div>
+            
+            
+                    
+          </form>
+
+        </div>
+
+      </div>
+
+     
+        
+        
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+      
+  </body>
+  
+</html>
