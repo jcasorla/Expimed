@@ -17,6 +17,21 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from apps.login_app.models import User as U
+from apps.dashboard_app.models import Patient,Med
+
+class UAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(U, UAdmin)
+  
+class PatientAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Patient, PatientAdmin)
+class MedAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Med, MedAdmin)
+  
+
 urlpatterns = [
      url(r'^', include('apps.login_app.urls')),
      url(r'^', include('apps.dashboard_app.urls')),

@@ -3,10 +3,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    # url(r'^$', views.index),
-    # url(r'^login$', views.login),
-    # url(r'^register$', views.register),
-    # url(r'^show$', views.show),
     url(r'^dash/show$', views.show),
     url(r'^dash/meds_grid$', views.meds_grid),    
     url(r'^dash/calendar$', views.calendar),

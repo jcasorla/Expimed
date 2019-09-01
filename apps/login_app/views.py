@@ -25,11 +25,6 @@ def show(request):
 
 def register(request):
    if request.method=="POST":
-      print(request.POST['first_name'])
-      print(request.POST['last_name'])
-      print(request.POST['email'])
-      print(request.POST['password'])
-      print(request.POST['password2'])
 
       request.session['first_name'] = request.POST.get('first_name')
       request.session['last_name'] = request.POST.get('last_name')
@@ -61,7 +56,6 @@ def register(request):
          )
       
       request.session['id']=user1.id
-      messages.add_message(request, messages.INFO, "You have successfully registered!")
       
 
       return redirect("/dash/show")
@@ -90,7 +84,7 @@ def login(request):
          request.session['first_name'] = getinfo.first_name
          return redirect("/dash/show")
 
-      messages.add_message(request, messages.INFO, "Email or password does not match!")
+      messages.add_message(request, messages.INFO, "Email or Password does not match!")
   
 
 
