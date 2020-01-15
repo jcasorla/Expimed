@@ -72,7 +72,11 @@ def login(request):
       print(request.POST['password'])
 
       password=request.POST['password']
-      getinfo = User.objects.get(email = request.POST['email'])
+      try:
+         getinfo = User.objects.get(email = request.POST['email'])
+      except:
+         messages.add_message(request, messages.INFO, "Email or Password does not match!")
+         return redirect ("/login_page")
       
       request.session['id'] = getinfo.id
       print(getinfo.email, getinfo.password)
@@ -83,8 +87,9 @@ def login(request):
       if val:
          request.session['first_name'] = getinfo.first_name
          return redirect("/dash/show")
-
-      messages.add_message(request, messages.INFO, "Email or Password does not match!")
+      else:
+         messages.add_message(request, messages.INFO, "Email or Password does not match!")
+         return redirect ("/login_page")
   
 
 

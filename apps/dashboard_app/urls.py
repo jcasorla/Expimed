@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     url(r'^dash/show$', views.show),
     url(r'^dash/meds_grid$', views.meds_grid),    
-    url(r'^dash/calendar$', views.calendar),
+    # url(r'^dash/calendar$', views.calendar),
     url(r'^dash/new_patient$', views.new_patient),
     url(r'^dash/insert_patient$', views.insert_patient),
     url(r'^dash/patient/(?P<my_val>\d+)$', views.patient_view),
