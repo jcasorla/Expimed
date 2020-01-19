@@ -58,7 +58,7 @@
               <tbody>
                 {% for one_med in all_meds %}
                 <tr>
-                  <th scope="row">{{one_med.id}}</th><td><a href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a href="/dash/med/{{one_med.id}}/edit">edit</a> | <a href="/dash/med/{{one_med.id}}/del">delete</a></td>
+                  <th scope="row">{{one_med.id}}</th><td><a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}/edit">edit</a> | <a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}/del">delete</a></td>
                 </tr>
 
                 {% endfor %}

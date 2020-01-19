@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta name="description" content="ExpiMed Registration"> -->
-    <title>New Medication</title>
+    <title>Edit Medication</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
@@ -34,19 +33,17 @@
       <div class="page-header">
           <h1>Medication #{{med.id}}</h1>
       </div>
-      <!-- <label class="radio-inline"><input type="radio" name="optradio" checked>Doctor</label>
-      <label class="radio-inline"><input type="radio" name="optradio">Patient</label> -->
       
       <div class="row justify-content-center align-items-center">
         <div class="col-lg align-self-center">
           <form action='/dash/med/{{med.id}}/update' method='post'>
             {% csrf_token %}
             <div class="form-group col-md-6 align-self-center">
-              <label for="input_name">Medication Name</label>
-              <input type="text" class="form-control" id="input_name" placeholder="med name" name="name" value={{med.name}}>
+              <label for="input_name" class="required">Medication Name</label>
+              <input type="text" class="form-control" id="input_name" name="name" value={{med.name}}>
             </div>
             <div class="form-group col-md-6 align-self-center">
-              <label for="input_category">Category</label>
+              <label for="input_category" class="required">Category</label>
               <select id="input_category" class="form-control" name="category" value={{med.category}}>
                 <option selected>{{med.category}}</option>
                 <option>Anti-Inflamatory</option>
@@ -55,9 +52,8 @@
               </select>
             </div>
             <div class="form-group col-md-6 align-self-center">
-              <label for="input_desc">Description</label>
-              <textarea class="form-control" rows="5" id="input_desc" placeholder="description" name="description" >{{med.description}}</textarea>
-              <!-- <input type="text" class="form-control" id="input_desc" placeholder="description" name="description"> -->
+              <label for="input_desc" class="required">Description</label>
+              <textarea class="form-control" rows="5" id="input_desc" name="description" >{{med.description}}</textarea>
             </div>
             <div class="form-group col-md-6 align-self-center">
               <button type="submit" class="btn btn-primary" value='Submit'>Update</button>

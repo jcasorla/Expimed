@@ -46,6 +46,22 @@
                     
                 <div id="accordion">
 
+                    <div class="card">
+                        <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                            Profile
+                        </a>
+                        </div>
+                        <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Name: {{pat.first_name}} {{pat.middle_name}} {{pat.last_name}}</p>
+                               <p>Email: {{pat.email}}  Phone: {{pat.phone1}}</p>             
+                                <p>Address: {{pat.address}}</p>
+                                <p>City: {{pat.city}}  State: {{pat.state}}  Zip: {{pat.zip}}</p>
+                            </div>
+                        </div>
+                    </div>
+
                     
                     
                     <div class="card">
@@ -54,7 +70,7 @@
                             Prescribed Medications
                         </a>
                         </div>
-                        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
                         <div class="card-body">
                             <div class="col-lg-15" >
                                     <table class="table table-condensed">
@@ -109,18 +125,7 @@
                         </div>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                            Medical Bio
-                        </a>
-                        </div>
-                        <div id="collapseThree" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                Medical Bio
-                            </div>
-                        </div>
-                    </div>
+                    
                     
                 </div>
 

@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta name="description" content="ExpiMed Registration"> -->
-    <title>New Patient</title>
+    <title>Edit Patient</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
@@ -35,76 +34,114 @@
       <div class="page-header">
         <h1>Patient #{{pat.id}}</h1>
       </div>
-      <!-- <label class="radio-inline"><input type="radio" name="optradio" checked>Doctor</label>
-      <label class="radio-inline"><input type="radio" name="optradio">Patient</label> -->
 
 
       <form action='/dash/patient/{{pat.id}}/update' method='post'>
         {% csrf_token %}
         <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="inputEmail4">First Name</label>
-              <input type="text" class="form-control" id="input_first_name"  value={{pat.first_name}} name="first_name">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="input_last_name">Last Name</label>
-              <input type="text" class="form-control" id="input_last_name"  value={{pat.last_name}} name="last_name">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="input_s_last_name">Second Last Name</label>
-              <input type="text" class="form-control" id="input_s_last_name"  value={{pat.sec_last_name}} name="s_last_name">
-            </div>
-          </div>
-        <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="inputEmai">Email</label>
-            <input type="email" class="form-control" id="inputEmai"  value={{pat.email}} name="email">
+            <label for="input_first_name" class="required">First Name</label>
+            <input type="text" class="form-control" id="input_first_name" name="first_name" value={{pat.first_name}}>
           </div>
           <div class="form-group col-md-4">
-            <label for="inputPhone">Primary Phone</label>
-            <input type="text" class="form-control" id="inputPhone"  value={{pat.phone1}} name="p_number">
+            <label for="input_s_middle_name">Middle Name</label>
+            <input type="text" class="form-control" id="input_s_middle_name" name="middle_name" value={{pat.middle_name}}>
           </div>
           <div class="form-group col-md-4">
-            <label for="inputA_Phone">Alternate Phone</label>
-            <input type="text" class="form-control" id="inputA_Phone"  value={{pat.phone2}} name="a_number">
-          </div>
+            <label for="input_last_name" class="required">Last Name</label>
+            <input type="text" class="form-control" id="input_last_name" name="last_name" value={{pat.last_name}}>
+          </div>            
         </div>
-        
         <div class="form-row">
-          <div class="form-group col-md-7">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" value={{pat.address}} name="address">
+          <div class="form-group col-md-8">
+            <label for="inputEmai" class="required">Email</label>
+            <input type="email" class="form-control" id="inputEmai" name="email" value={{pat.email}}>
           </div>
-          <div class="form-group col-md-5">
-            <label for="inputColonia">Colonia</label>
-            <input type="text" class="form-control" id="inputColonia" value={{pat.colonia}} name="colonia">
+          <div class="form-group col-md-4">
+            <label for="inputPhone" class="required">Primary Phone</label>
+            <input type="text" class="form-control" id="inputPhone" name="p_number" value={{pat.phone1}}>
           </div>
+      
+        </div>
+      
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputAddress" class="required">Address</label>
+            <input type="text" class="form-control" id="inputAddress" name="address" value={{pat.address}}>
+          </div>
+      
           
         </div>
-        
+      
         <div class="form-row">
-          <div class="form-group col-md-5">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity" value={{pat.city}} name="city">
+          <div class="form-group col-md-7">
+            <label for="inputCity" class="required">City</label>
+            <input type="text" class="form-control" id="inputCity" name="city" value={{pat.city}}>
           </div>
-          <div class="form-group col-md-5">
-            <label for="inputState">State</label>
+          <div class="form-group col-md-3">
+            <label for="inputState" class="required">State</label>
             <select id="inputState" class="form-control" name="state">
               <option selected>{{pat.state}}</option>
               <option>California</option>
               <option>Nevada</option>
               <option>Arizona</option>
+              <option>Alabama</option>
+              <option>Alaska</option>
+              <option>Arkansas</option>
+              <option>Colorado</option>
+              <option>Connecticut</option>
+              <option>Delaware</option>
+              <option>Florida</option>
+              <option>Georgia</option>
+              <option>Hawaii</option>
+              <option>Illinois</option>
+              <option>Indiana</option>
+              <option>Iowa</option>
+              <option>Kansas</option>
+              <option>Kentucky</option>
+              <option>Lousiana</option>
+              <option>Maine</option>
+              <option>Maryland</option>
+              <option>Massachusetts</option>
+              <option>Michigan</option>
+              <option>Minnesota</option>
+              <option>Mississippi</option>
+              <option>Missouri</option>
+              <option>Montana</option>
+              <option>Nebraska</option>
+              <option>New Hampshire</option>
+              <option>New Jersey</option>
+              <option>New Mexico</option>
+              <option>New York</option>
+              <option>North Carolina</option>
+              <option>North Dakota</option>
+              <option>Ohio</option>
+              <option>Oklahoma</option>
+              <option>Oregon</option>
+              <option>Penssylvania</option>
+              <option>Rhode Island</option>
+              <option>South Carolina</option>
+              <option>South Dakota</option>
+              <option>Tennessee</option>
+              <option>Texas</option>
+              <option>Utah</option>
+              <option>Vermont</option>
+              <option>Virginia</option>
+              <option>Washington</option>
+              <option>West Virginia</option>
+              <option>Wisconsin</option>
+              <option>Wyoming</option>
+            
             </select>
           </div>
           <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" value={{pat.zip_code}} name="zip_code">
+            <label for="inputZip" class="required">Zip</label>
+            <input type="text" class="form-control" id="inputZip" name="zip_code" value={{pat.zip_code}}>
           </div>
         </div>
+        
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
-        
-        
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

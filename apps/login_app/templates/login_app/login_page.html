@@ -7,11 +7,27 @@
         <title>Document</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         {% load static %}
-        <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
+        <link rel="stylesheet" href="{% static 'login_app/css/style.css'%}">
     </head>
     <body>
         <div class='container'>
-            <a href="/logout">logout</a>
+
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-9">
+                        <h1>ExpiMed</h1>
+                    </div>
+                    <div class="col-lg">
+                    
+                        <a class="btn btn-primary btn-sm" href="/">lading Page</a>
+            
+                    </div>
+                </div>
+            </div>         
+            
             <div class="row justify-content-center">
                 {% if messages %}
                 <ul class="messages">
@@ -22,7 +38,8 @@
                 {% endif %}
                
                 <div class="card-group">
-                    <div class="card" style="width: 600px;">
+                    
+                    <div class="card" style="width: 600px;">                        
                         <div class="card-body text-center">
                             <h1>Registration</h1>
                             
@@ -35,9 +52,9 @@
                                 <label for="usr">Email:</label>
                                 <input type="text" class="form-control" id="email" name="email">
                                 <label for="pwd">Password:</label>
-                                <input type="text" class="form-control" id="pwd" name="password">
+                                <input type="password" class="form-control" id="pwd" name="password">
                                 <label for="cpwd">Confirm Password:</label>
-                                <input type="text" class="form-control" id="cpwd" name="password2">
+                                <input type="password" class="form-control" id="cpwd" name="password2">
                                 
 
                                 <div class="col-sm-offset-2 col-sm-10">
@@ -54,7 +71,7 @@
                                 <label for="usr">Email:</label>
                                 <input type="text" class="form-control" id="email" name="email">
                                 <label for="pwd">Password:</label>
-                                <input type="text" class="form-control" id="pwd" name="password">
+                                <input type="password" class="form-control" id="pwd" name="password">
                                 <button type="submit" class="btn btn-primary" value='Submit'>Login</button>
                             </form>
                         </div>

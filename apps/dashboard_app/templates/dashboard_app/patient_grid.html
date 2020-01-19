@@ -58,7 +58,7 @@
               <tbody>
                   {% for one_pat in all_pats %}
                   <tr>
-                    <th scope="row">{{one_pat.id}}</th><td><a href="/dash/patient/{{one_pat.id}}">{{one_pat.first_name}} {{one_pat.last_name}}</a></td><td><a href="/dash/patient/{{one_pat.id}}/edit">edit</a> | <a href="/dash/patient/{{one_pat.id}}/del">delete</a></td>
+                    <th scope="row">{{one_pat.id}}</th><td><a class="btn btn-primary btn-sm" href="/dash/patient/{{one_pat.id}}">{{one_pat.first_name}} {{one_pat.last_name}}</a></td><td><a class="btn btn-primary btn-sm" href="/dash/patient/{{one_pat.id}}/edit">edit</a> | <a class="btn btn-primary btn-sm" href="/dash/patient/{{one_pat.id}}/del">delete</a></td>
                   </tr>
   
                   {% endfor %}

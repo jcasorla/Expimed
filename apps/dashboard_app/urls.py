@@ -1,6 +1,9 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
+# from django.conf.urls import handler404
+
+# handler404 = 'dashboard_app.views.bad_request'
 
 urlpatterns = [
     url(r'^dash/show$', views.show),
@@ -21,5 +24,7 @@ urlpatterns = [
     url(r'^dash/med/(?P<my_val>\d+)/del$', views.med_del),
     url(r'^dash/med/(?P<my_val>\d+)/edit$', views.med_edit),
     url(r'^dash/med/(?P<my_val>\d+)/update$', views.med_update),
+    # url(r'^(dash.*)/$', views.bad_request),
+     url(r'.*/$', views.bad_request),
 
 ]
