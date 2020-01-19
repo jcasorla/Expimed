@@ -51,9 +51,22 @@ class MedManager(models.Manager):
             errors["name"] = "name should be at least 2 characters"
         elif not all(rule(postData['name']) for rule in rulesn):
             errors["name"] = "Name should include only letters."
-        if len(postData['category']) < 1:
-            errors["category"] = "category is required"
+        # if len(postData['category']) < 1:
+        #     errors["category"] = "category is required"
        
+        if len(postData['description']) < 6:
+            errors["description"] = "description should be at least 6 characters"
+            
+        return errors
+
+class CategoryManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        if len(postData['name']) < 2:
+            errors["name"] = "name should be at least 2 characters"
+        elif not all(rule(postData['name']) for rule in rulesn):
+            errors["name"] = "Name should include only letters."
+        
         if len(postData['description']) < 6:
             errors["description"] = "description should be at least 6 characters"
             
@@ -76,16 +89,30 @@ class Patient(models.Model):
     objects =PatientManager()    
     # presc_meds = a list of meds prescribed to patient
 
+class Category(models.Model):
+    name=models.CharField(max_length=45)
+    description = models.TextField(max_length=255)
+    # medcategory = models.ManyToManyField(Med, related_name="med_category")
+    creator = models.ForeignKey(User, related_name = "category_creator",on_delete=models.CASCADE)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    objects =CategoryManager()
 
 class Med(models.Model):
     name=models.CharField(max_length=255)
     category=models.CharField(max_length=255)
+    category2 = models.ForeignKey(Category, related_name="meds")
     description = models.TextField(null=True)
     presc = models.ManyToManyField(Patient, related_name="presc_meds")
     creator = models.ForeignKey(User, related_name = "meds_creator",on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    #med_category = a list of categories
     objects =MedManager()
+
+
+
+
 
 
 

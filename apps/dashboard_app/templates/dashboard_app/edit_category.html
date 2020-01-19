@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Medication</title>
+    <title>Edit Category</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'dashboard_app/css/style.css'%}">
@@ -12,7 +12,7 @@
     <div class="container">
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link" href="/dash/meds_grid">Home</a>
+          <a class="nav-link" href="/dash/cat_grid">Home</a>
         </li>
         
         <li class="nav-item">
@@ -31,36 +31,23 @@
       {% endif %}
 
       <div class="page-header">
-          <h1>Medication #{{med.id}}</h1>
+          <h1>Update Category</h1>
       </div>
       
       <div class="row justify-content-center align-items-center">
         <div class="col-lg align-self-center">
-          <form action='/dash/med/{{med.id}}/update' method='post'>
+          <form action='/dash/cat/{{cat.id}}/update' method='post'>
             {% csrf_token %}
             <div class="form-group col-md-6 align-self-center">
-              <label for="input_name" class="required">Medication Name</label>
-              <input type="text" class="form-control" id="input_name" name="name" value={{med.name}}>
+              <label for="input_name" class="required">name</label>
+              <input type="text" class="form-control" id="input_name" name="name" value={{cat.name}}>
             </div>
-            <div class="form-group col-md-6 align-self-center">
-              <label for="input_category" class="required">Category</label>
-              <!-- <select id="input_category" class="form-control" name="category" value={{med.category}}>
-                <option selected>{{med.category}}</option>
-                <option>Anti-Inflamatory</option>
-                <option>Antibiotics</option>
-                <option>Anesthetics</option>
-              </select> -->
-              <select id="input_category" class="form-control" name="category">
-                <option selected>{{med.category2.name}}</option>
-                {% for cat in all_cats %}
-                  <option value={{cat.id}}>{{cat.name}}</option>
-                {% endfor %}
-              </select>
-            </div>
+           
             <div class="form-group col-md-6 align-self-center">
               <label for="input_desc" class="required">Description</label>
-              <textarea class="form-control" rows="5" id="input_desc" name="description" >{{med.description}}</textarea>
+              <textarea class="form-control" rows="5" id="input_desc" name="description">{{cat.description}}</textarea>
             </div>
+            
             <div class="form-group col-md-6 align-self-center">
               <button type="submit" class="btn btn-primary" value='Submit'>Update</button>
 

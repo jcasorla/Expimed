@@ -198,8 +198,6 @@ def unpresc_med2(request,user_id,med_id):
         this_med = Med.objects.get(id=med_id)
         this_pat = Patient.objects.get(id = user_id)
         this_med.presc.remove(this_pat)
-
-        # return redirect(f"/dash/patient/{user_id}")
         return redirect(f"/dash/med/{med_id}")
         
     else:
@@ -225,8 +223,11 @@ def meds_grid(request):
 
 def new_med(request):
     if('id' in request.session):
+        context={
+            "all_cats": Category.objects.all()
+        }        
       
-        return render(request, "dashboard_app/new_medication.html")
+        return render(request, "dashboard_app/new_medication.html", context)
     
     else:
         return redirect('/')
@@ -244,13 +245,18 @@ def insert_med(request):
                     return redirect('/dash/new_med')
             
             else:
-                
+                print(request.POST['category'])
+                this_cat = Category.objects.get(id = request.POST['category'])
+                print(this_cat.name)
                 Med.objects.create(
                     name=request.POST['name'],\
-                    category=request.POST['category'], \
+                    category2=this_cat, \
                     description=request.POST['description'],\
                     creator_id=request.session['id'],
                 )
+                # this_med = Med.objects.get(id=med_id)
+                # this_pat = Patient.objects.get(id = user_id)
+                # this_med.presc.add(this_pat)
                 return redirect('/dash/meds_grid')
     
     else:
@@ -275,9 +281,10 @@ def med_view(request,my_val):
 
 def med_edit(request,my_val):
     if('id' in request.session):
-      
+          
         context={
-        "med": Med.objects.get(id=my_val)
+            "med": Med.objects.get(id=my_val),
+            "all_cats": Category.objects.all()
         }
         
         return render(request, "dashboard_app/edit_med.html",context)
@@ -325,6 +332,120 @@ def med_del(request,my_val):
         return redirect('/')
 
     
+########################### Patient ###########################################
+def cat_grid(request):
+    if('id' in request.session):
+      
+        context={
+        "all_cats": Category.objects.all()
+
+        }        
+
+        return render(request, "dashboard_app/category_grid.html", context)
+    
+    else:
+        return redirect('/')
+
+    
+
+def new_cat(request):
+    if('id' in request.session):
+      
+        return render(request, "dashboard_app/new_category.html")
+    
+    else:
+        return redirect('/')
+
+def insert_cat(request):
+    if('id' in request.session):
+      
+        if request.method=="POST":
+    
+            errors=Category.objects.basic_validator(request.POST)
+            if len(errors) > 0:
+                for key, value in errors.items():
+                    print(key, value + '\n')
+                    messages.add_message(request, messages.INFO,  value)
+                    return redirect('/dash/new_cat')
+            
+            else:
+                
+                Category.objects.create(
+                    name=request.POST['name'],\
+                    description=request.POST['description'],\
+                    creator_id=request.session['id'],
+                )
+                return redirect('/dash/cat_grid')
+    
+    else:
+        return redirect('/')
+
+    
+
+def cat_view(request,my_val):
+    if('id' in request.session):
+      
+        my_meds=Category.objects.first().meds.all()
+
+        context={
+            "cat": Category.objects.get(id=my_val),
+            "my_meds": my_meds
+        }
+        
+        return render(request, "dashboard_app/view_cat.html",context)
+    
+    else:
+        return redirect('/')    
+
+def cat_edit(request,my_val):
+    if('id' in request.session):
+      
+        context={
+        "cat": Category.objects.get(id=my_val)
+        }
+        
+        return render(request, "dashboard_app/edit_category.html",context)
+    
+    else:
+        return redirect('/')
+
+   
+
+def cat_update(request,my_val):
+    if('id' in request.session):
+      
+        if request.method=="POST":
+    
+            errors=Category.objects.basic_validator(request.POST)
+            if len(errors) > 0:
+                for key, value in errors.items():
+                    print(key, value + '\n')
+                    messages.add_message(request, messages.INFO,  value)
+                return redirect(f"/dash/cat/{my_val}/edit")
+
+            else:
+                c1=Category.objects.get(id=my_val)
+                c1.name=request.POST["name"]
+                c1.description=request.POST["description"]
+                c1.save()
+                
+                return redirect(f"/dash/cat/{my_val}")
+    
+    else:
+        return redirect('/')
+
+    
+
+def cat_del(request,my_val):
+    if('id' in request.session):
+      
+        c1=Category.objects.get(id=my_val)
+        c1.delete()
+
+        return redirect('/dash/cat_grid')
+        
+    else:
+        return redirect('/')
 
 
 

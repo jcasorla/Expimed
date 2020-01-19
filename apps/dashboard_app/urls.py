@@ -7,7 +7,8 @@ from . import views
 
 urlpatterns = [
     url(r'^dash/show$', views.show),
-    url(r'^dash/meds_grid$', views.meds_grid),    
+    url(r'^dash/meds_grid$', views.meds_grid),
+    url(r'^dash/cat_grid$', views.cat_grid), 
     # url(r'^dash/calendar$', views.calendar),
     url(r'^dash/new_patient$', views.new_patient),
     url(r'^dash/insert_patient$', views.insert_patient),
@@ -24,7 +25,13 @@ urlpatterns = [
     url(r'^dash/med/(?P<my_val>\d+)/del$', views.med_del),
     url(r'^dash/med/(?P<my_val>\d+)/edit$', views.med_edit),
     url(r'^dash/med/(?P<my_val>\d+)/update$', views.med_update),
+    url(r'^dash/new_cat$', views.new_cat),
+    url(r'^dash/insert_cat$', views.insert_cat),
+    url(r'^dash/cat/(?P<my_val>\d+)$', views.cat_view),
+    # url(r'^dash/cat/(?P<my_val>\d+)/del$', views.cat_del),
+    url(r'^dash/cat/(?P<my_val>\d+)/edit$', views.cat_edit),
+    url(r'^dash/cat/(?P<my_val>\d+)/update$', views.cat_update),
     # url(r'^(dash.*)/$', views.bad_request),
-     url(r'.*/$', views.bad_request),
+    url(r'.*/$', views.bad_request),
 
 ]

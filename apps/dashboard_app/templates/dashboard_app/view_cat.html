@@ -15,7 +15,7 @@
     <div class="container">
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link" href="/dash/meds_grid">Home</a>
+          <a class="nav-link" href="/dash/cat_grid">Home</a>
         </li>
         
         <li class="nav-item">
@@ -28,24 +28,20 @@
       
 
       <div class="page-header">
-          <h1>Medication #{{med.id}}</h1>
+          <h1>Category #{{cat.id}}</h1>
       </div>
       
       <div class="row">
         <div class="col-md-5">
            
           <div class="form-group">
-            <label for="input_name">Medication Name</label>
-            <input type="text" class="form-control" id="input_name"  name="name" value={{med.name}} disabled>
+            <label for="input_name">Category Name</label>
+            <input type="text" class="form-control" id="input_name"  name="name" value={{cat.name}} disabled>
           </div>
-          <div class="form-group">
-            <label for="input_category">Category</label>
-            <input type="text" class="form-control" id="input_category"  name="category" value={{med.category2.name}} disabled>
-            
-          </div>
+          
           <div class="form-group">
             <label for="input_desc">Description</label>
-            <textarea class="form-control" rows="5" id="input_desc" name="description"  disabled>{{med.description}}</textarea>
+            <textarea class="form-control" rows="5" id="input_desc" name="description"  disabled>{{cat.description}}</textarea>
           </div>
 
         </div>
@@ -55,7 +51,7 @@
                 <div class="card">
                   <div class="card-header">
                     <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                      Prescribed To:
+                      Medications:
                     </a>
                   </div>
                   <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -63,13 +59,14 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>#</th><th>Name</th><th>Action</th>
+                                    <th>#</th><th>Name</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for my_pat in my_pats %}
+                                {% for my_med in my_meds %}
                                 <tr>
-                                <th scope="row">{{my_pat.id}}</th><td><a href="/dash/patient/{{my_pat.id}}">{{my_pat.first_name}} {{my_pat.last_name}}</a></td><td><a href="/dash/patient/{{my_pat.id}}/unpresc_med2/{{med.id}}">un-prescribe</a></td>
+                                <th scope="row">{{my_med.id}}</th><td><a href="/dash/med/{{my_med.id}}">{{my_med.name}}</a></td>
+                                
                                 </tr>
               
                                 {% endfor %}

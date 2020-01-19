@@ -15,14 +15,14 @@
           <a class="nav-link" href="/dash/show">Patient Grid</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/dash/meds_grid">Medications</a>
+          <a class="nav-link" href="/dash/meds_grid">Medications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/dash/cat_grid">Categories</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="/dash/calendar">Calendar</a>
         </li> -->
-        <li class="nav-item">
-          <a class="nav-link" href="/dash/cat_grid">Categories</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
@@ -36,7 +36,7 @@
 
         </div>
         <div class="col-sm-4">
-          <a class="btn btn-primary" href="/dash/new_med">New Medication</a>
+          <a class="btn btn-primary" href="/dash/new_cat">New Category</a>
           
 
         </div>
@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col-lg">
             <div class="page-header">
-              <h1>Medications Grid</h1>
+              <h1>Category Grid</h1>
             </div>
               
 
@@ -59,9 +59,9 @@
                 </tr>
               </thead>
               <tbody>
-                {% for one_med in all_meds %}
+                {% for one_cat in all_cats %}
                 <tr>
-                  <th scope="row">{{one_med.id}}</th><td><a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}/edit">edit</a> | <a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}/del">delete</a></td>
+                  <th scope="row">{{one_cat.id}}</th><td><a class="btn btn-primary btn-sm" href="/dash/cat/{{one_cat.id}}">{{one_cat.name}}</a></td><td><a class="btn btn-primary btn-sm" href="/dash/cat/{{one_cat.id}}/edit">edit</a> </td>
                 </tr>
 
                 {% endfor %}
