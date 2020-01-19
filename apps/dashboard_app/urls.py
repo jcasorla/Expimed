@@ -1,14 +1,11 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
-# from django.conf.urls import handler404
-
-# handler404 = 'dashboard_app.views.bad_request'
 
 urlpatterns = [
     url(r'^dash/show$', views.show),
     url(r'^dash/meds_grid$', views.meds_grid),    
-    # url(r'^dash/calendar$', views.calendar),
+    url(r'^dash/calendar$', views.calendar),
     url(r'^dash/new_patient$', views.new_patient),
     url(r'^dash/insert_patient$', views.insert_patient),
     url(r'^dash/patient/(?P<my_val>\d+)$', views.patient_view),
@@ -24,7 +21,5 @@ urlpatterns = [
     url(r'^dash/med/(?P<my_val>\d+)/del$', views.med_del),
     url(r'^dash/med/(?P<my_val>\d+)/edit$', views.med_edit),
     url(r'^dash/med/(?P<my_val>\d+)/update$', views.med_update),
-    # url(r'^(dash.*)/$', views.bad_request),
-     url(r'.*/$', views.bad_request),
 
 ]

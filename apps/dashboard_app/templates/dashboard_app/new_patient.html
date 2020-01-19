@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="ExpiMed Registration"> -->
     <title>New Patient</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
@@ -34,109 +35,70 @@
       <div class="page-header">
           <h1>New Patient</h1>
       </div>
+      <!-- <label class="radio-inline"><input type="radio" name="optradio" checked>Doctor</label>
+      <label class="radio-inline"><input type="radio" name="optradio">Patient</label> -->
 
 
       <form action='/dash/insert_patient' method='post'>
         {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-4">
-              <label for="input_first_name" class="required">First Name</label>
-              <input type="text" class="form-control" id="input_first_name" name="first_name">
+              <label for="inputEmail4">First Name</label>
+              <input type="text" class="form-control" id="input_first_name" placeholder="First Name" name="first_name">
             </div>
             <div class="form-group col-md-4">
-              <label for="input_s_middle_name">Middle Name</label>
-              <input type="text" class="form-control" id="input_s_middle_name" name="middle_name">
+              <label for="input_last_name">Last Name</label>
+              <input type="text" class="form-control" id="input_last_name" placeholder="Last Name" name="last_name">
             </div>
             <div class="form-group col-md-4">
-              <label for="input_last_name" class="required">Last Name</label>
-              <input type="text" class="form-control" id="input_last_name" name="last_name">
-            </div>            
+              <label for="input_s_last_name">Second Last Name</label>
+              <input type="text" class="form-control" id="input_s_last_name" placeholder="Second Last Name" name="s_last_name">
+            </div>
           </div>
         <div class="form-row">
-          <div class="form-group col-md-8">
-            <label for="inputEmai" class="required">Email</label>
-            <input type="email" class="form-control" id="inputEmai" name="email">
+          <div class="form-group col-md-4">
+            <label for="inputEmai">Email</label>
+            <input type="email" class="form-control" id="inputEmai" placeholder="Email" name="email">
           </div>
           <div class="form-group col-md-4">
-            <label for="inputPhone" class="required">Primary Phone</label>
-            <input type="text" class="form-control" id="inputPhone" name="p_number" >
+            <label for="inputPhone">Primary Phone</label>
+            <input type="text" class="form-control" id="inputPhone" placeholder="777-777-7777" name="p_number">
           </div>
-       
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group col-md">
-            <label for="inputAddress" class="required">Address</label>
-            <input type="text" class="form-control" id="inputAddress" name="address">
+          <div class="form-group col-md-4">
+            <label for="inputA_Phone">Alternate Phone</label>
+            <input type="text" class="form-control" id="inputA_Phone" placeholder="777-777-7777" name="a_number">
           </div>
-       
-          
         </div>
         
         <div class="form-row">
           <div class="form-group col-md-7">
-            <label for="inputCity" class="required">City</label>
-            <input type="text" class="form-control" id="inputCity" name="city">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="example: 1234 Main St" name="address">
           </div>
-          <div class="form-group col-md-3">
-            <label for="inputState" class="required">State</label>
+          <div class="form-group col-md-5">
+            <label for="inputColonia">Colonia</label>
+            <input type="text" class="form-control" id="inputColonia" placeholder="Example: Colonia Independencia" name="colonia">
+          </div>
+          
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity" placeholder="San Jose" name="city">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputState">State</label>
             <select id="inputState" class="form-control" name="state">
-              <option selected></option>
+              <option selected>Choose...</option>
               <option>California</option>
               <option>Nevada</option>
               <option>Arizona</option>
-              <option>Alabama</option>
-              <option>Alaska</option>
-              <option>Arkansas</option>
-              <option>Colorado</option>
-              <option>Connecticut</option>
-              <option>Delaware</option>
-              <option>Florida</option>
-              <option>Georgia</option>
-              <option>Hawaii</option>
-              <option>Illinois</option>
-              <option>Indiana</option>
-              <option>Iowa</option>
-              <option>Kansas</option>
-              <option>Kentucky</option>
-              <option>Lousiana</option>
-              <option>Maine</option>
-              <option>Maryland</option>
-              <option>Massachusetts</option>
-              <option>Michigan</option>
-              <option>Minnesota</option>
-              <option>Mississippi</option>
-              <option>Missouri</option>
-              <option>Montana</option>
-              <option>Nebraska</option>
-              <option>New Hampshire</option>
-              <option>New Jersey</option>
-              <option>New Mexico</option>
-              <option>New York</option>
-              <option>North Carolina</option>
-              <option>North Dakota</option>
-              <option>Ohio</option>
-              <option>Oklahoma</option>
-              <option>Oregon</option>
-              <option>Penssylvania</option>
-              <option>Rhode Island</option>
-              <option>South Carolina</option>
-              <option>South Dakota</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Utah</option>
-              <option>Vermont</option>
-              <option>Virginia</option>
-              <option>Washington</option>
-              <option>West Virginia</option>
-              <option>Wisconsin</option>
-              <option>Wyoming</option>
-             
             </select>
           </div>
           <div class="form-group col-md-2">
-            <label for="inputZip" class="required">Zip</label>
-            <input type="text" class="form-control" id="inputZip" name="zip_code">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip" placeholder="95112" name="zip_code">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>

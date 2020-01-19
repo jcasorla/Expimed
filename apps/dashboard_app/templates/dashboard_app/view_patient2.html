@@ -48,59 +48,14 @@
 
                     <div class="card">
                         <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                            Profile
-                        </a>
-                        </div>
-                        <div id="collapseThree" class="collapse show" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>Name: {{pat.first_name}} {{pat.middle_name}} {{pat.last_name}}</p>
-                               <p>Email: {{pat.email}}  Phone: {{pat.phone1}}</p>             
-                                <p>Address: {{pat.address}}</p>
-                                <p>City: {{pat.city}}  State: {{pat.state}}  Zip: {{pat.zip}}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    
-                    <div class="card">
-                        <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                            Prescribed Medications
-                        </a>
-                        </div>
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <div class="col-lg-15" >
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>Med Name</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for my_med in my_meds %}
-                                            <tr>
-                                            <th scope="row">{{my_med.id}}</th><td><a href="/dash/med/{{my_med.id}}">{{my_med.name}}</a></td><td><a href="/dash/patient/{{pat.id}}/unpresc_med/{{my_med.id}}">un-prescribe</a></td>
-                                            </tr>
-            
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
                         <a class="card-link" data-toggle="collapse" href="#collapseOne">
                             Available Medications
                         </a>
                         </div>
-                        <div id="collapseOne" class="collapse" data-parent="#accordion">
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
                         <div class="card-body">
                             <div class="col-lg-15" >
+                                <!-- <h5>Available Medications</h5> -->
                                 <table class="table table-condensed">
                                     <thead>
                                         <tr>
@@ -121,11 +76,52 @@
                             <hr class="my-2">
             
                             
-                            </div>
+                        </div>
                         </div>
                     </div>
                     
+                    <div class="card">
+                        <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                            Prescribed Medications
+                        </a>
+                        </div>
+                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="col-lg-15" >
+                                    <!-- <h5>Prescribed Medications</h5> -->
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Med Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for my_med in my_meds %}
+                                            <tr>
+                                            <th scope="row">{{my_med.id}}</th><td><a href="/dash/med/{{my_med.id}}">{{my_med.name}}</a></td><td><a href="/dash/patient/{{pat.id}}/unpresc_med/{{my_med.id}}">un-prescribe</a></td>
+                                            </tr>
+            
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
                     
+                    <div class="card">
+                        <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                            Medical Bio
+                        </a>
+                        </div>
+                        <div id="collapseThree" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            Medical Bio
+                        </div>
+                        </div>
+                    </div>
                     
                 </div>
 

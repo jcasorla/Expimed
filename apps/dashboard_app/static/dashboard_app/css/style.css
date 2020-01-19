@@ -1,14 +1,6 @@
 
 
 body {
-    background-image: url(medical-background.png);
+    background-image: url(medical-back5.jpg);
 }
 
-label.required::after {
-    content: " *";
-    color: red;
-}
-
-a {
-    color: darkblue
-}

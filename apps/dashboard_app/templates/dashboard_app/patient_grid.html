@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="Patient Grid"> -->
     <title>Patient Grid</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
@@ -17,23 +18,30 @@
         <li class="nav-item">
           <a class="nav-link" href="/dash/meds_grid">Medications</a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/dash/calendar">Calendar</a>
-        </li> -->
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>        
-      
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
       </ul>
       <hr class="my-4">
 
       <div class="row">
         <div class="col-lg-8">
+          <!-- <h5>{{request.session.id}}</h5> -->
           <h3>Hello, {{request.session.first_name}}</h3> 
 
         </div>
         <div class="col-sm-4">
           <a class="btn btn-primary" href="/dash/new_patient">New Patient</a>
+            <!-- <form action="" method="GET">
+              <button type="submit" class="btn btn-primary">New Patient</button>
+              
+          </form>       -->
           
 
         </div>
@@ -46,7 +54,39 @@
         <div class="col-lg">
             <div class="page-header">
               <h1>Patient Grid</h1>
-            </div>              
+            </div>
+              
+<!-- 
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table> -->
             
             
             <table class="table">
@@ -58,7 +98,7 @@
               <tbody>
                   {% for one_pat in all_pats %}
                   <tr>
-                    <th scope="row">{{one_pat.id}}</th><td><a class="btn btn-primary btn-sm" href="/dash/patient/{{one_pat.id}}">{{one_pat.first_name}} {{one_pat.last_name}}</a></td><td><a class="btn btn-primary btn-sm" href="/dash/patient/{{one_pat.id}}/edit">edit</a> | <a class="btn btn-primary btn-sm" href="/dash/patient/{{one_pat.id}}/del">delete</a></td>
+                    <th scope="row">{{one_pat.id}}</th><td><a href="/dash/patient/{{one_pat.id}}">{{one_pat.first_name}} {{one_pat.last_name}}</a></td><td><a href="/dash/patient/{{one_pat.id}}/edit">edit</a> | <a href="/dash/patient/{{one_pat.id}}/del">delete</a></td>
                   </tr>
   
                   {% endfor %}

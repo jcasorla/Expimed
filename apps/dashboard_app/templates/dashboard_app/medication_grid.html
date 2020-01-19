@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="Patient Grid"> -->
     <title>Patient Grid</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
@@ -17,23 +18,32 @@
         <li class="nav-item">
           <a class="nav-link active" href="/dash/meds_grid">Medications</a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/dash/calendar">Calendar</a>
-        </li> -->
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
 
+        
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
       </ul>
       <hr class="my-4">
 
       <div class="row">
         <div class="col-lg-8">
+          <!-- <h5>{{request.session.id}}</h5> -->
           <h3>Hello, {{request.session.first_name}}</h3> 
 
         </div>
         <div class="col-sm-4">
           <a class="btn btn-primary" href="/dash/new_med">New Medication</a>
+            <!-- <form action="" method="GET">
+              <button type="submit" class="btn btn-primary">New Med</button>
+              
+          </form>       -->
           
 
         </div>
@@ -58,7 +68,7 @@
               <tbody>
                 {% for one_med in all_meds %}
                 <tr>
-                  <th scope="row">{{one_med.id}}</th><td><a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}/edit">edit</a> | <a class="btn btn-primary btn-sm" href="/dash/med/{{one_med.id}}/del">delete</a></td>
+                  <th scope="row">{{one_med.id}}</th><td><a href="/dash/med/{{one_med.id}}">{{one_med.name}}</a></td><td><a href="/dash/med/{{one_med.id}}/edit">edit</a> | <a href="/dash/med/{{one_med.id}}/del">delete</a></td>
                 </tr>
 
                 {% endfor %}
