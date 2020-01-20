@@ -77,7 +77,6 @@ def login(request):
          return redirect ("/login_page")
       
       request.session['id'] = getinfo.id
-      print(getinfo.email, getinfo.password)
 
       val = bcrypt.checkpw(password.encode('utf8'), getinfo.password.encode('utf8'))
       print(val)
