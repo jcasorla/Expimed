@@ -54,7 +54,7 @@ def insert_patient(request):
             errors=Patient.objects.basic_validator(request.POST)
             if len(errors) > 0:
                 for key, value in errors.items():
-                    print(key, value + '\n')
+                    # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
                     return redirect('/dash/new_patient')
             
@@ -117,7 +117,7 @@ def patient_update(request,my_val):
             errors=Patient.objects.basic_validator(request.POST)
             if len(errors) > 0:
                 for key, value in errors.items():
-                    print(key, value + '\n')
+                    # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
                 return redirect(f"/dash/patient/{my_val}/edit")
 
@@ -230,14 +230,13 @@ def insert_med(request):
             errors=Med.objects.basic_validator(request.POST)
             if len(errors) > 0:
                 for key, value in errors.items():
-                    print(key, value + '\n')
+                    # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
                     return redirect('/dash/new_med')
             
             else:
                 print(request.POST['category'])
                 this_cat = Category.objects.get(id = request.POST['category'])
-                print(this_cat.name)
                 Med.objects.create(
                     name=request.POST['name'],\
                     category2=this_cat, \
@@ -289,7 +288,7 @@ def med_update(request,my_val):
             errors=Med.objects.basic_validator(request.POST)
             if len(errors) > 0:
                 for key, value in errors.items():
-                    print(key, value + '\n')
+                    # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
                 return redirect(f"/dash/med/{my_val}/edit")
 
@@ -351,7 +350,7 @@ def insert_cat(request):
             errors=Category.objects.basic_validator(request.POST)
             if len(errors) > 0:
                 for key, value in errors.items():
-                    print(key, value + '\n')
+                    # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
                     return redirect('/dash/new_cat')
             
@@ -406,7 +405,7 @@ def cat_update(request,my_val):
             errors=Category.objects.basic_validator(request.POST)
             if len(errors) > 0:
                 for key, value in errors.items():
-                    print(key, value + '\n')
+                    # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
                 return redirect(f"/dash/cat/{my_val}/edit")
 

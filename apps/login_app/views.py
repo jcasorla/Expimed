@@ -34,7 +34,7 @@ def register(request):
       errors = User.objects.basic_validator(request.POST)
       if len(errors) > 0:
          for key, value in errors.items():
-            print(key, value + '\n')
+            # print(key, value + '\n')
             messages.add_message(request, messages.INFO,  value)
          return redirect('/login_page')
       
@@ -67,9 +67,7 @@ def login(request):
       if not request.POST['email'] or not request.POST['password']:
          messages.add_message(request, messages.INFO, "Email and Password are required!")
          return redirect ("/login_page")
-
-      print(request.POST['email'])
-      print(request.POST['password'])
+      
 
       password=request.POST['password']
       try:
