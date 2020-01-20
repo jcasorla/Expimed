@@ -92,7 +92,6 @@ class Patient(models.Model):
 class Category(models.Model):
     name=models.CharField(max_length=45)
     description = models.TextField(max_length=255)
-    # medcategory = models.ManyToManyField(Med, related_name="med_category")
     creator = models.ForeignKey(User, related_name = "category_creator",on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -107,7 +106,6 @@ class Med(models.Model):
     creator = models.ForeignKey(User, related_name = "meds_creator",on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    #med_category = a list of categories
     objects =MedManager()
 
 

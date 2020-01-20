@@ -35,9 +35,7 @@ class ShowManager(models.Manager):
             errors["last_name"] = "Last Name should be at least 8 characters long and should include only letters."
         if len(postData['password']) < 7:
             errors["password"] = "network should be at least 3 characters"
-        
-        # if len(postData['email']) < 7:
-        #     errors["email"] = "network should be at least 3 characters"
+  
 
         if not EMAIL_REGEX.match(postData['email']): 
             errors["email"]  = "Invalid email format." 
@@ -55,8 +53,6 @@ class User(models.Model):
     last_name=models.CharField(max_length=45)
     email=models.CharField(max_length=255)
     password=models.CharField(max_length=255)
-    # description = models.TextField(null=True)
-    # release_date=models.DateTimeField(null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects =ShowManager()
