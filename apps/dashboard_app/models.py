@@ -98,7 +98,7 @@ class Category(models.Model):
 class Med(models.Model):
     name=models.CharField(max_length=255)
     category=models.CharField(max_length=255)
-    category2 = models.ForeignKey(Category, related_name="meds")
+    category2 = models.ForeignKey(Category, related_name="meds", on_delete=models.PROTECT)
     description = models.TextField(null=True)
     presc = models.ManyToManyField(Patient, related_name="presc_meds")
     creator = models.ForeignKey(User, related_name = "meds_creator",on_delete=models.CASCADE)
