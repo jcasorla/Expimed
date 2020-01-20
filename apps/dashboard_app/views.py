@@ -80,15 +80,9 @@ def insert_patient(request):
     
 def patient_view(request,my_val):
     if('id' in request.session):
-          # this_pat=Patient.objects.get(id=my_val)
-        # my_meds=this_pat.presc_meds.all().filter(id=my_val).values()
+       
         my_meds=Med.objects.all().filter(presc__id__contains=my_val).values()
-        # not_mine=this_pat.presc_meds.all().exclude(id=my_val).values()
         not_mine=Med.objects.all().exclude(presc__id__contains=my_val).values()
-
-        # presc_meds = Med.objects.all().filter(presc_meds__contains=my_val)      
-        # not_meds = Med.objects.all().exclude(presc_meds__id__contains=my_val)
-        # my_meds=Med.objects.first().presc_med.all()
 
         context={
             "pat": Patient.objects.get(id=my_val),
@@ -166,10 +160,6 @@ def presc_med(request,user_id,med_id):
         this_med = Med.objects.get(id=med_id)
         this_pat = Patient.objects.get(id = user_id)
         this_med.presc.add(this_pat)
-        #print("this book's likes",this_book.likes.all().values())
-        # whopresc = this_med.presc.filter(id = user_id)
-        # print(whopresc.values())
-        # print("who liked it?",whopresc.values()[0]['id'])
 
         return redirect(f"/dash/patient/{user_id}")
 
@@ -254,9 +244,6 @@ def insert_med(request):
                     description=request.POST['description'],\
                     creator_id=request.session['id'],
                 )
-                # this_med = Med.objects.get(id=med_id)
-                # this_pat = Patient.objects.get(id = user_id)
-                # this_med.presc.add(this_pat)
                 return redirect('/dash/meds_grid')
     
     else:

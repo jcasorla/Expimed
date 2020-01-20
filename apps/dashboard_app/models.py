@@ -51,8 +51,6 @@ class MedManager(models.Manager):
             errors["name"] = "name should be at least 2 characters"
         elif not all(rule(postData['name']) for rule in rulesn):
             errors["name"] = "Name should include only letters."
-        # if len(postData['category']) < 1:
-        #     errors["category"] = "category is required"
        
         if len(postData['description']) < 6:
             errors["description"] = "description should be at least 6 characters"
