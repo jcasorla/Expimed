@@ -426,8 +426,11 @@ def cat_del(request,my_val):
     if('id' in request.session):
       
         c1=Category.objects.get(id=my_val)
-        c1.delete()
-
+        try:
+            c1.delete()
+        except:
+            value="cannot delete as medications are using this category"
+            messages.add_message(request, messages.INFO,  value)
         return redirect('/dash/cat_grid')
         
     else:

@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^dash/new_cat$', views.new_cat),
     url(r'^dash/insert_cat$', views.insert_cat),
     url(r'^dash/cat/(?P<my_val>\d+)$', views.cat_view),
-    # url(r'^dash/cat/(?P<my_val>\d+)/del$', views.cat_del),
+    url(r'^dash/cat/(?P<my_val>\d+)/del$', views.cat_del),
     url(r'^dash/cat/(?P<my_val>\d+)/edit$', views.cat_edit),
     url(r'^dash/cat/(?P<my_val>\d+)/update$', views.cat_update),
     # url(r'^(dash.*)/$', views.bad_request),
