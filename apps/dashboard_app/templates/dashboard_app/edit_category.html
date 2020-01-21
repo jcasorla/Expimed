@@ -39,8 +39,8 @@
           <form action='/dash/cat/{{cat.id}}/update' method='post'>
             {% csrf_token %}
             <div class="form-group col-md-6 align-self-center">
-              <label for="input_name" class="required">name</label>
-              <input type="text" class="form-control" id="input_name" name="name" value={{cat.name}}>
+              <label for="name" class="required">name</label>
+              <input type="text" class="form-control" name="name" value="{{cat.name}}">              
             </div>
            
             <div class="form-group col-md-6 align-self-center">

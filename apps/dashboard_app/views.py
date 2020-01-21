@@ -110,6 +110,7 @@ def patient_edit(request,my_val):
     
 
 def patient_update(request,my_val):
+    
     if('id' in request.session):
       
         if request.method=="POST":
@@ -119,7 +120,8 @@ def patient_update(request,my_val):
                 for key, value in errors.items():
                     # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
-                return redirect(f"/dash/patient/{my_val}/edit")
+                #f"/dash/patient/{my_val}/edit"
+                return redirect("/dash/patient/" + my_val + "/edit")
 
             else:
                 p1=Patient.objects.get(id=my_val)
@@ -132,8 +134,8 @@ def patient_update(request,my_val):
                 p1.zip_code=request.POST["zip_code"]
                 p1.phone1=request.POST["p_number"]
                 p1.save()
-                
-                return redirect(f"/dash/patient/{my_val}")
+                #f"/dash/patient/{my_val}"
+                return redirect("/dash/patient/" + my_val)
     
     else:
         return redirect('/')
@@ -160,8 +162,8 @@ def presc_med(request,user_id,med_id):
         this_med = Med.objects.get(id=med_id)
         this_pat = Patient.objects.get(id = user_id)
         this_med.presc.add(this_pat)
-
-        return redirect(f"/dash/patient/{user_id}")
+        #f"/dash/patient/{user_id}"
+        return redirect("/dash/patient/"+user_id)
 
     
     else:
@@ -174,8 +176,8 @@ def unpresc_med(request,user_id,med_id):
         this_med = Med.objects.get(id=med_id)
         this_pat = Patient.objects.get(id = user_id)
         this_med.presc.remove(this_pat)
-
-        return redirect(f"/dash/patient/{user_id}")
+        #f"/dash/patient/{user_id}"
+        return redirect("/dash/patient/"+user_id)
     
     else:
         return redirect('/')
@@ -188,7 +190,8 @@ def unpresc_med2(request,user_id,med_id):
         this_med = Med.objects.get(id=med_id)
         this_pat = Patient.objects.get(id = user_id)
         this_med.presc.remove(this_pat)
-        return redirect(f"/dash/med/{med_id}")
+        #f"/dash/med/{med_id}"
+        return redirect("/dash/med/"+med_id)
         
     else:
         return redirect('/')
@@ -290,7 +293,8 @@ def med_update(request,my_val):
                 for key, value in errors.items():
                     # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
-                return redirect(f"/dash/med/{my_val}/edit")
+                #f"/dash/med/{my_val}/edit"
+                return redirect("/dash/med/" + my_val + "/edit")
 
             else:
                 m1=Med.objects.get(id=my_val)
@@ -298,8 +302,8 @@ def med_update(request,my_val):
                 m1.description=request.POST["description"]
                 m1.category=request.POST["category"]
                 m1.save()
-                
-                return redirect(f"/dash/med/{my_val}")
+                #f"/dash/med/{my_val}"
+                return redirect("/dash/med/"+my_val)
     
     else:
         return redirect('/')
@@ -352,7 +356,7 @@ def insert_cat(request):
                 for key, value in errors.items():
                     # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
-                    return redirect('/dash/new_cat')
+                return redirect('/dash/new_cat')
             
             else:
                 
@@ -407,15 +411,16 @@ def cat_update(request,my_val):
                 for key, value in errors.items():
                     # print(key, value + '\n')
                     messages.add_message(request, messages.INFO,  value)
-                return redirect(f"/dash/cat/{my_val}/edit")
+                #f"/dash/cat/{my_val}/edit"
+                return redirect("/dash/cat/" + my_val +"/edit")
 
             else:
                 c1=Category.objects.get(id=my_val)
                 c1.name=request.POST["name"]
                 c1.description=request.POST["description"]
                 c1.save()
-                
-                return redirect(f"/dash/cat/{my_val}")
+                #f"/dash/cat/{my_val}"
+                return redirect("/dash/cat/"+my_val)
     
     else:
         return redirect('/')
